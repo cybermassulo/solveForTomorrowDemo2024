@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavigationBar from "./NavigationBar";
+import ParticipantesList from "./ParticipantesList"; // Import the ParticipantesList component
+import ProjetosList from "./ProjetosList"; // Import the ProjetosList component
+import OrientadoresList from "./OrientadoresList"; // Import the OrientadoresList component
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavigationBar />
+      <Routes>
+        <Route path="/participantes" element={<ParticipantesList />} />
+        <Route path="/projetos" element={<ProjetosList />} />
+        <Route path="/orientadores" element={<OrientadoresList />} />
+      </Routes>
+    </Router>
   );
 }
 

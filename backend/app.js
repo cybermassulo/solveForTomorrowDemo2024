@@ -8,6 +8,7 @@ const participantesRouter = require("./routes/participantes");
 const projetosRouter = require("./routes/projetos");
 const bodyParser = require("body-parser");
 const app = express();
+const cors = require('cors');
 const port = process.env.PORT || 3000;
 // Rota para documentação Swagger
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
@@ -15,6 +16,9 @@ app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
 // Outras rotas da sua aplicação...
+app.use(cors({
+  origin: 'http://localhost:3000' // URL do frontend
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/orientadores", orientadoresRouter);
